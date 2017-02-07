@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root to: "artist#index"
+  root to: "artists#index"
   resources :artists
 end

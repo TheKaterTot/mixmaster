@@ -1,11 +1,2 @@
 <h1>Edit Playlist</h1>
-<%= form_for @playlist do |f| %>
-<%= f.collection_check_boxes :song_ids, @songs, :id, :title do |song| %>
-  <div>
-  <%= song.label { song.check_box + song.text } %>
-  </div>
-<% end %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.submit %>
-<% end %>
+<%= render partial: "form" %>

@@ -1,4 +1,4 @@
 Fabricator(:song) do
-  title { Faker::Book.title } 
-  artist nil
+  title { Faker::Book.title }
+  artist
 end

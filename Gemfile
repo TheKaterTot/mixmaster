@@ -43,6 +43,7 @@ group :development, :test do
   gem 'fabrication'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'pry'
 end
 
 group :development do

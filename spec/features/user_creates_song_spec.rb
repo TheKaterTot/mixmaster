@@ -14,3 +14,16 @@ feature "user creates song" do
     expect(page).to have_link artist.name, href: artist_path(artist)
   end
 end
+
+context "the submitted info is invalid" do
+  let!(:artist) { Fabricate(:artist) }
+  scenario "they see an error message" do
+
+    visit artist_path(artist)
+    click_on "New song"
+    fill_in "song_title", with: ""
+    click_on "Create Song"
+
+    expect(page).to have_content("Title can't be blank")
+  end
+end

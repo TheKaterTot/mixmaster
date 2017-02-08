@@ -1,4 +1,4 @@
 Fabricator(:song) do
-  title  "MyString"
+  title { Faker::Book.title } 
   artist nil
 end

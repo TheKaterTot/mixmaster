@@ -1,9 +1,10 @@
 require "rails_helper"
 
 feature "user edits a playlist" do
-  let!(:playlist) { Fabricate(:playlist) }
+  let(:user) { Fabricate(:user) }
+  let!(:playlist) { Fabricate(:playlist, user: user) }
   scenario "they visit edit" do
-    visit playlist_path(playlist)
+    visit user_playlist_path(user, playlist)
     click_on "Edit Playlist"
     fill_in "playlist_name", with: "Pumped Up"
     check("playlist_song_ids_#{playlist.songs.first.id}")

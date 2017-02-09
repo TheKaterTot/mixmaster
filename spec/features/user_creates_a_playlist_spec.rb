@@ -1,11 +1,12 @@
 require "rails_helper"
 
 feature "user creates a playlist" do
-  let!(:playlist) { Fabricate(:playlist) }
+  let(:user) { Fabricate(:user) }
+  let!(:playlist) { Fabricate(:playlist, user: user) }
   scenario "they see the page for the individual playlist" do
     playlist_name = "My Jams"
 
-    visit playlists_path
+    visit user_playlists_path(user)
     click_on "New playlist"
     fill_in "playlist_name", with: playlist_name
     check("playlist_song_ids_#{playlist.songs.first.id}")

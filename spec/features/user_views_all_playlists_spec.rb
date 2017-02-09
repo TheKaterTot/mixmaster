@@ -1,14 +1,15 @@
 require "rails_helper"
 
 feature "user sees all playlists" do
-  let!(:playlist) { Fabricate(:playlist) }
-  let!(:playlist_2) { Fabricate(:playlist) }
+  let(:user) { Fabricate(:user) }
+  let!(:playlist) { Fabricate(:playlist, user: user) }
+  let!(:playlist_2) { Fabricate(:playlist, user: user) }
   scenario "they visit index" do
-    visit playlists_path
+    visit user_playlists_path(user)
 
     expect(page).to have_content(playlist.name)
-    expect(page).to have_link playlist.name, href: playlist_path(playlist)
+    expect(page).to have_link playlist.name, href: user_playlist_path(user, playlist)
     expect(page).to have_content(playlist_2.name)
-    expect(page).to have_link playlist_2.name, href: playlist_path(playlist_2)
+    expect(page).to have_link playlist_2.name, href: user_playlist_path(user, playlist_2)
   end
 end

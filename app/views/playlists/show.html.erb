@@ -1,5 +1,5 @@
 <h1><%= @playlist.name %></h1>
-<%= link_to "Edit Playlist", edit_playlist_path(@playlist) %>
+<%= link_to "Edit Playlist", edit_user_playlist_path(@user, @playlist) %>
 <ul>
   <% @playlist.songs.each do |song| %>
   <li><%= link_to song.title, song %></li>
